@@ -139,3 +139,63 @@ updateSinceProposal();
 
 // Update once a minute (doesn't need to be per-second, it only changes daily)
 setInterval(updateSinceProposal, 60 * 1000);
+
+
+const music = document.getElementById("backgroundMusic");
+
+if (music) {
+
+    // Restore the previous position
+    const savedTime = localStorage.getItem("musicTime");
+
+    if (savedTime !== null) {
+        music.currentTime = parseFloat(savedTime);
+    }
+
+    // Try to continue playing
+    if (localStorage.getItem("musicPlaying") === "true") {
+        music.play().catch(() => {
+            console.log("Click the music button to continue playing.");
+        });
+    }
+
+    // Keep saving the current position
+    music.addEventListener("timeupdate", function () {
+
+        localStorage.setItem(
+            "musicTime",
+            music.currentTime
+        );
+
+    });
+
+}
+
+
+// Play / pause button
+
+function toggleMusic() {
+
+    if (!music) return;
+
+    if (music.paused) {
+
+        music.play();
+
+        localStorage.setItem(
+            "musicPlaying",
+            "true"
+        );
+
+    } else {
+
+        music.pause();
+
+        localStorage.setItem(
+            "musicPlaying",
+            "false"
+        );
+
+    }
+
+}

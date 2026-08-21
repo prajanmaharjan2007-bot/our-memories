@@ -1041,3 +1041,39 @@ footer {
         font-size: 26px;
     }
 }
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+.music-button {
+    position: fixed;
+
+    bottom: 25px;
+    right: 25px;
+
+    width: 55px;
+    height: 55px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #e75480;
+
+    color: white;
+
+    font-size: 23px;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+
+    z-index: 9998;
+
+    transition: 0.3s;
+}
+
+.music-button:hover {
+    transform: scale(1.1);
+    background: #d94370;
+}
